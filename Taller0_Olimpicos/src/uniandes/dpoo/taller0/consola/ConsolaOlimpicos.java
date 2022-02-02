@@ -1,5 +1,6 @@
 package uniandes.dpoo.taller0.consola;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -62,7 +63,9 @@ public class ConsolaOlimpicos
 					ejecutarMedallistasPorNacionYGenero();
 				else if (opcion_seleccionada == 12 && calculadora != null)
 					ejecutarPorcentajeMedallistas();
-				else if (opcion_seleccionada == 13)
+				else if (opcion_seleccionada == 13 && calculadora != null)
+					ejecutarBuscarAtleta();
+				else if (opcion_seleccionada == 14)
 				{
 					System.out.println("Saliendo de la aplicación ...");
 					continuar = false;
@@ -102,7 +105,8 @@ public class ConsolaOlimpicos
 		System.out.println("10. Consultar el atleta todoterreno");
 		System.out.println("11. Consultar los medallistas por país y género");
 		System.out.println("12. Consultar el porcentaje de atletas que son medallistas");
-		System.out.println("13. Salir de la aplicación\n");
+		System.out.println("13. Buscar un atleta");
+		System.out.println("14. Salir de la aplicación\n");
 	}
 
 	/**
@@ -312,6 +316,22 @@ public class ConsolaOlimpicos
 			}
 		}
 	}
+	
+	private void ejecutarBuscarAtleta()
+	{
+		System.out.println("\n" + "Nombre de Atleta" + "\n");
+		String nombre = input("Por favor ingrese el nombre de un atleta");
+		Atleta atleta = calculadora.buscarAtleta(nombre);
+		if (atleta == null)
+		{
+			System.out.println("No existe un atleta con ese nombre");
+		}
+		else
+		{
+			System.out.println(atleta);
+			}
+	}
+	
 
 	/**
 	 * Le pide al usuario un rango de años y el nombre de un atleta. A continuación
@@ -376,7 +396,7 @@ public class ConsolaOlimpicos
 		String archivo = input("Por favor ingrese el nombre del archivo CSV con los atletas");
 		try
 		{
-			calculadora = LoaderOlimpicos.cargarArchivo(archivo);
+			calculadora = LoaderOlimpicos.cargarArchivo("./data/"+ archivo);
 			System.out.println("Se cargó el archivo " + archivo + " con información de los Juegos Olímpicos.");
 			Collection<String> eventos = calculadora.darNombresDeportes();
 			System.out.println("Los deportes para los que se tiene información son:");
