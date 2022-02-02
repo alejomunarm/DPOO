@@ -335,7 +335,7 @@ public class ConsolaOlimpicos
 
 	/**
 	 * Le pide al usuario un rango de años y el nombre de un atleta. A continuación
-	 * le muestra al usuario todas las medallas ganadas por el atleta en ese rango
+	 * le muestra al usuario todas las medallas ganadas por el atleta en ese rangoo
 	 * de años.
 	 */
 	private void ejecutarMedallasEnRango()
